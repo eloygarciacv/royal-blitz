@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem;
+}
+
+.game-status {
+  min-height: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  aspect-ratio: 1 / 1;
+  width: min(100%, 20rem);
+}
+
+#final-board {
+  width: min(50%, 10rem);
+}
+
+.board li {
+  list-style: none;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border: 1px solid white;
+  cursor: pointer;
+  font-size: 3rem;
+}
+
+.board li:nth-child(odd) {
+  background-color: burlywood;
+}
+
+#final-board li {
+  cursor: default;
+  font-size: 1.5rem;
+}
+
+#board li.selected {
+  outline: 4px solid darkslateblue;
+  outline-offset: -4px;
+}
+
+#board li.legal-move {
+  background-color: lightgreen;
+}
