@@ -1,6 +1,6 @@
 // Global variables
 const boardSize = 3;
-const gameTime = 30; // seconds
+const gameTime = 60;
 
 // Utility variables
 let board = [];
@@ -13,6 +13,9 @@ let gameWon = false;
 let gameOver = false;
 
 let moveCount = 0;
+
+let timeRemaining = gameTime;
+let timer = null;
 
 // Game functions
 function selectCards() {
@@ -117,6 +120,8 @@ function boardsAreEqual(currentBoard, targetBoard) {
   return boardsAreEqual;
 }
 
+// Display pieces, board and movements
+
 function printPiece(square, piece) {
   if (isEmptySquare(piece)) {
     return;
@@ -173,6 +178,8 @@ function updateBoardHighlights() {
   });
 }
 
+// Select and move
+
 function selectPiece(row, column) {
   selectedSquare = { row, column };
   legalMoves = getLegalMoves(board, row, column);
@@ -191,6 +198,8 @@ function movePiece(fromRow, fromColumn, toRow, toColumn) {
   board[fromRow][fromColumn] = null;
 }
 
+// Updating the front-end
+
 function updateStatus(message) {
   const statusElement = document.querySelector("#game-status");
   statusElement.textContent = message;
@@ -203,13 +212,63 @@ function updateMoveCount() {
   moveCountElement.textContent = moveCount;
 }
 
+// Timer functions
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const secondsText = String(remainingSeconds).padStart(2, "0");
+
+  return `${minutes}:${secondsText}`;
+}
+
+function updateTimer() {
+  const timerElement = document.querySelector("#timer");
+  timerElement.textContent = formatTime(timeRemaining);
+}
+
+function stopTimer() {
+  clearInterval(timer);
+  timer = null;
+}
+
+function startTimer() {
+  // protection to do not start a new interval in each movement
+  if (timer !== null) {
+    return;
+  }
+
+  timer = setInterval(() => {
+    timeRemaining -= 1;
+    updateTimer();
+
+    if (timeRemaining <= 0) {
+      timeRemaining = 0;
+      updateTimer();
+      endGameByTime();
+    }
+  }, 1000);
+}
+
+// End game functions
+
 function checkWin() {
   if (boardsAreEqual(board, finalBoard)) {
     gameWon = true;
+    stopTimer();
     updateStatus("You won!");
     return;
   }
 }
+
+function endGameByTime() {
+  gameOver = true;
+  clearSelection();
+  stopTimer();
+  updateStatus("Time is over");
+}
+
+// Main actions
 
 function handleSquareClick(clickEvent) {
   if (gameWon || gameOver) {
@@ -240,6 +299,7 @@ function handleSquareClick(clickEvent) {
       clickedColumn,
     );
     updateMoveCount();
+    startTimer();
     clearSelection();
     renderBoard();
     checkWin();
@@ -254,9 +314,8 @@ function renderBoard() {
   updateBoardHighlights();
 }
 
-// GAme timeline
+// Game timeline
 selectCards();
 printBoard(finalBoard, "final-board", false);
 renderBoard();
-
-// to-do: tengo que cambiar algunas lógicas aquí porque estoy pintando el tablero final cada vez que hago un movimiento y por eso sigo necesitando el reset de la línea 152 boardElement.innerHTML = "";
+updateTimer();
