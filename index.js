@@ -1,10 +1,12 @@
 // Global variables
 const boardSize = 3;
-const gameTime = 600;
+const gameTime = 30;
 
 // Utility variables
 let board = [];
 let finalBoard = [];
+let boardIndex = null;
+let finalBoardIndex = null;
 
 let selectedSquare = null;
 let legalMoves = [];
@@ -18,23 +20,45 @@ let moveCount = 0;
 let timeRemaining = gameTime;
 let timer = null;
 
-// Game functions
-function selectCards() {
-  const boardIndex = Math.floor(Math.random() * cards.length);
-  let finalBoardIndex = Math.floor(Math.random() * cards.length);
+// Selecting boards
 
-  while (finalBoardIndex === boardIndex) {
-    finalBoardIndex = Math.floor(Math.random() * cards.length);
+function getRandomIndex(excludedIndex1, excludedIndex2) {
+  const availableIndexes = [];
+
+  for (let i = 0; i < cards.length; i++) {
+    if (i !== excludedIndex1 && i !== excludedIndex2) {
+      availableIndexes.push(i);
+    }
   }
 
-  cards[boardIndex].forEach((row) => {
-    board.push([...row]);
-  });
+  const randomPosition = Math.floor(Math.random() * availableIndexes.length);
 
-  cards[finalBoardIndex].forEach((row) => {
-    finalBoard.push([...row]);
-  });
+  return availableIndexes[randomPosition];
 }
+
+function selectCards() {
+  boardIndex = getRandomIndex();
+  finalBoardIndex = getRandomIndex(boardIndex);
+
+  board = cloneBoard(cards[boardIndex]);
+  finalBoard = cloneBoard(cards[finalBoardIndex]);
+}
+
+function cloneBoard(sourceBoard) {
+  return sourceBoard.map((row) => [...row]);
+}
+
+function selectNextBoard() {
+  const nextFinalBoardIndex = getRandomIndex(boardIndex, finalBoardIndex);
+
+  boardIndex = finalBoardIndex;
+  finalBoardIndex = nextFinalBoardIndex;
+  finalBoard = cloneBoard(cards[finalBoardIndex]);
+
+  printBoard(finalBoard, "final-board", false);
+}
+
+// Game functions
 
 function isInsideBoard(row, column) {
   return row >= 0 && row < boardSize && column >= 0 && column < boardSize;
@@ -258,8 +282,34 @@ function checkWin() {
     gameWon = true;
     stopTimer();
     updateStatus("You won!");
+    document.querySelector("#next-level").hidden = false;
+    document
+      .querySelector("#next-level")
+      .addEventListener("click", startNextLevel);
     return;
   }
+}
+
+function resetLevelState() {
+  gameWon = false;
+  gameOver = false;
+  moveCount = 0;
+  timeRemaining = gameTime;
+
+  stopTimer();
+  clearSelection();
+  updateTimer();
+  document.querySelector("#move-count").textContent = moveCount;
+}
+
+function startNextLevel() {
+  selectNextBoard();
+  level += 1;
+  resetLevelState();
+
+  document.querySelector("#level").textContent = level;
+  document.querySelector("#next-level").hidden = true;
+  updateStatus();
 }
 
 function endGameByTime() {

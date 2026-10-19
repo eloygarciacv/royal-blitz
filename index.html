@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p id="game-status">The royal study</p>
+    <p id="game-status"></p>
+    <button id="next-level" type="button" hidden>Next level</button>
     <p>Level: <span id="level">1</span></p>
     <p>Move count: <span id="move-count">0</span></p>
     <p>Time remaining: <span id="timer">0:00</span></p>
@@ -19,10 +20,6 @@
     <ul>
       To-do
       <li>on gameOver: retry, new game</li>
-      <li>on gameWon: next level</li>
-      <ul>
-        <li>new count: levels</li>
-      </ul>
     </ul>
     <script src="src/pieces.js"></script>
     <script src="src/cards.js"></script>
