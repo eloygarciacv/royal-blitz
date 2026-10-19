@@ -8,12 +8,22 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p id="game-status" class="game-status" role="status">The royal study</p>
+    <p id="game-status">The royal study</p>
+    <p>Level: <span id="level">1</span></p>
     <p>Move count: <span id="move-count">0</span></p>
     <p>Time remaining: <span id="timer">0:00</span></p>
     <ul id="final-board" class="board"></ul>
     <br />
     <ul id="board" class="board"></ul>
+
+    <ul>
+      To-do
+      <li>on gameOver: retry, new game</li>
+      <li>on gameWon: next level</li>
+      <ul>
+        <li>new count: levels</li>
+      </ul>
+    </ul>
     <script src="src/pieces.js"></script>
     <script src="src/cards.js"></script>
     <script src="index.js"></script>

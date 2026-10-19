@@ -1,6 +1,6 @@
 // Global variables
 const boardSize = 3;
-const gameTime = 60;
+const gameTime = 600;
 
 // Utility variables
 let board = [];
@@ -12,6 +12,7 @@ let legalMoves = [];
 let gameWon = false;
 let gameOver = false;
 
+let level = 1;
 let moveCount = 0;
 
 let timeRemaining = gameTime;
@@ -40,7 +41,7 @@ function isInsideBoard(row, column) {
 }
 
 function isEmptySquare(piece) {
-  return piece === null || piece === undefined;
+  return piece === null;
 }
 
 function positionsAreEqual(firstPosition, secondPosition) {
