@@ -196,6 +196,13 @@ function updateStatus(message) {
   statusElement.textContent = message;
 }
 
+function updateMoveCount() {
+  moveCount++;
+
+  const moveCountElement = document.querySelector("#move-count");
+  moveCountElement.textContent = moveCount;
+}
+
 function checkWin() {
   if (boardsAreEqual(board, finalBoard)) {
     gameWon = true;
@@ -232,6 +239,7 @@ function handleSquareClick(clickEvent) {
       clickedRow,
       clickedColumn,
     );
+    updateMoveCount();
     clearSelection();
     renderBoard();
     checkWin();
