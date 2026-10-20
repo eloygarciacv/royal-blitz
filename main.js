@@ -315,7 +315,7 @@ function endGameByTime() {
   gameOver = true;
   clearSelection();
   stopTimer();
-  updateStatus("Time is over");
+  updateStatus("Time is over! Try again?");
 }
 
 // Main actions
