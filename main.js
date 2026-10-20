@@ -152,9 +152,7 @@ function printPiece(square, piece) {
     return;
   }
 
-  square.setAttribute("aria-label", piece.name);
-
-  square.textContent = piece.icon;
+  square.innerHTML = piece.svg;
 }
 
 function printBoard(board, boardId, isInteractive) {
@@ -168,6 +166,7 @@ function printBoard(board, boardId, isInteractive) {
 
       square.dataset.row = rowIndex;
       square.dataset.column = columnIndex;
+      square.classList.add("square");
 
       printPiece(square, piece);
 
