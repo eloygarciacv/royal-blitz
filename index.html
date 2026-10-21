@@ -24,7 +24,7 @@
   <body>
     <main>
       <aside>
-        <nav class="nav col-2">
+        <nav class="nav col-2 mb-m">
           <a href="./" class="link ghost">The Digital Study</a>
           <ul>
             <li><label for="how-to-play" class="link">How to play</label></li>
@@ -39,11 +39,11 @@
             match the pieces in the end board. You have a total of 2 minutes to
             complete as much levels as you can.
           </p>
-          <p class="p-indent">
+          <p class="p-indent mb-m">
             Pieces moves as in a chess game. When a piece is position, it will
             change its color to match the end board.
           </p>
-          <label for="show-movements" class="link mt-m ml-s"
+          <label for="show-movements" class="link ml-s"
             >Show / hide pieces movements
             <span class="arrow-icon">↘</span></label
           >
@@ -303,13 +303,25 @@
             <div>
               <p>Level: <span id="level">1</span></p>
               <div class="mt-m">
-                <p class="mb-xs">Move count: <span id="move-count">0</span></p>
+                <p class="mb-xs">
+                  Current moves: <span id="move-count">0</span>
+                </p>
+                <p class="mb-xs">
+                  Average moves: <span id="avg-moves-count">N/A</span>
+                </p>
+              </div>
+              <div class="mt-m">
                 <p class="mb-xs">
                   Time remaining: <span id="timer">0:00</span>
                 </p>
               </div>
             </div>
-            <p id="game-status">Start game</p>
+            <div class="d-flex">
+              <p id="game-status">Move to start</p>
+              <button id="next-level" class="link hidden" type="button">
+                Next level
+              </button>
+            </div>
           </div>
         </section>
         <section id="board-container">

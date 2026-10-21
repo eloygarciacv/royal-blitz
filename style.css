@@ -14,6 +14,11 @@
   text-box: trim-both cap alphabetic;
 }
 
+button {
+  all: unset;
+  text-box: trim-both cap alphabetic;
+}
+
 @font-face {
   font-family: "ABC Areal";
   src:
@@ -32,7 +37,6 @@ label {
   display: inline-block;
 }
 
-// bugfix for iPhone
 label[for="show-movements"] {
   display: block;
   width: fit-content;
@@ -77,6 +81,11 @@ label[for="show-movements"] {
   display: none;
 }
 
+.d-flex {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .link {
   cursor: pointer;
   text-decoration: underline;
@@ -115,10 +124,6 @@ body {
 
   background-color: var(--lightgrey);
   padding-bottom: 3rem;
-}
-
-button {
-  all: unset;
 }
 
 main {
@@ -192,7 +197,11 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 2px;
+  padding-top: 3px;
+}
+
+#next-level {
+  color: var(--orange);
 }
 
 /* Board */

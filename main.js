@@ -16,6 +16,8 @@ let gameOver = false;
 
 let level = 1;
 let moveCount = 0;
+let totalMoveCount = 0;
+let avgMovesCount = 0;
 
 let timeRemaining = gameTime;
 let timer = null;
@@ -151,6 +153,12 @@ function boardsAreEqual(currentBoard, targetBoard) {
   return boardsAreEqual;
 }
 
+function getAvgMoves() {
+  avgMovesCount = totalMoveCount / level;
+
+  return avgMovesCount;
+}
+
 // Display pieces, board and movements
 
 function printPiece(square, piece) {
@@ -218,6 +226,13 @@ function selectPiece(row, column) {
   legalMoves = getLegalMoves(board, row, column);
 
   updateBoardHighlights();
+
+  if (legalMoves.length === 0) {
+    updateStatus("Cannot move");
+    return;
+  }
+
+  updateStatus("Move to...");
 }
 
 function clearSelection() {
@@ -235,14 +250,21 @@ function movePiece(fromRow, fromColumn, toRow, toColumn) {
 
 function updateStatus(message) {
   const statusElement = document.querySelector("#game-status");
+
   statusElement.textContent = message;
 }
 
 function updateMoveCount() {
   moveCount++;
+  totalMoveCount++;
 
   const moveCountElement = document.querySelector("#move-count");
   moveCountElement.textContent = moveCount;
+}
+
+function updateAvgMoves() {
+  const avgMovesElement = document.querySelector("#avg-moves-count");
+  avgMovesElement.textContent = avgMovesCount.toFixed(1);
 }
 
 // Timer functions
@@ -289,13 +311,17 @@ function checkWin() {
   if (boardsAreEqual(board, finalBoard)) {
     gameWon = true;
     stopTimer();
+    getAvgMoves();
+    updateAvgMoves();
     updateStatus("You won!");
-    document.querySelector("#next-level").hidden = false;
+    document.querySelector("#next-level").classList.remove("hidden");
     document
       .querySelector("#next-level")
       .addEventListener("click", startNextLevel);
     return;
   }
+
+  updateStatus("Select a piece");
 }
 
 function resetLevelState() {
@@ -315,16 +341,17 @@ function startNextLevel() {
   resetLevelState();
 
   document.querySelector("#level").textContent = level;
-  document.querySelector("#next-level").hidden = true;
+  document.querySelector("#next-level").classList.add("hidden");
   updateStatus();
   renderBoard();
+  updateStatus("Move to start");
 }
 
 function endGameByTime() {
   gameOver = true;
   clearSelection();
   stopTimer();
-  updateStatus("Time is over! Try again?");
+  updateStatus("Time is over!");
 }
 
 // Main actions
@@ -342,6 +369,13 @@ function handleSquareClick(clickEvent) {
 
   if (positionsAreEqual(selectedSquare, clickedSquare)) {
     clearSelection();
+
+    if (moveCount === 0) {
+      updateStatus("Move to start");
+      return;
+    }
+
+    updateStatus("Select a piece");
     return;
   }
 
