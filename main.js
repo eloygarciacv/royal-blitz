@@ -131,6 +131,12 @@ function piecesAreEqual(firstPiece, secondPiece) {
   return firstPiece.name === secondPiece.name;
 }
 
+function isPieceInPosition(row, column, piece) {
+  return (
+    !isEmptySquare(piece) && piecesAreEqual(piece, finalBoard[row][column])
+  );
+}
+
 function boardsAreEqual(currentBoard, targetBoard) {
   let boardsAreEqual = true;
 
@@ -168,6 +174,13 @@ function printBoard(board, boardId, isInteractive) {
       square.dataset.column = columnIndex;
       square.classList.add("square");
 
+      if (
+        boardId === "board" &&
+        isPieceInPosition(rowIndex, columnIndex, piece)
+      ) {
+        square.classList.add("correct-position");
+      }
+
       printPiece(square, piece);
 
       if (isInteractive) {
@@ -190,7 +203,6 @@ function updateBoardHighlights() {
 
     square.classList.remove("selected");
     square.classList.remove("legal-move");
-    // to-do: se me queda un class vacío en el html al añadir la clase y luego eliminarla
 
     if (positionsAreEqual(squarePosition, selectedSquare)) {
       square.classList.add("selected");
@@ -308,6 +320,7 @@ function startNextLevel() {
   document.querySelector("#level").textContent = level;
   document.querySelector("#next-level").hidden = true;
   updateStatus();
+  renderBoard();
 }
 
 function endGameByTime() {

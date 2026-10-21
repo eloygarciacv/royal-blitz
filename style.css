@@ -1,5 +1,6 @@
 :root {
   --deepblue: #16232b;
+  --brightblue: #05ecff;
   --orange: #ff5b04;
   --lightblue: #e4eef0;
   --lightgrey: #fafafa;
@@ -35,24 +36,31 @@ body {
   align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
-  cursor: pointer;
 }
 
 .board li:nth-child(odd) {
   background-color: var(--lightblue);
 }
 
-#final-board li {
-  cursor: default;
+#board li:has(> *),
+#board li.legal-move {
+  cursor: pointer;
 }
 
 #board li.selected {
-  outline: 4px solid lightgreen;
+  outline: 4px solid var(--brightblue);
   outline-offset: -4px;
 }
 
-#board li.legal-move {
-  background-color: lightgreen;
+#board li.legal-move::after {
+  content: "";
+  width: 25%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--brightblue);
+}
+
+#board li.correct-position svg {
+  color: var(--orange);
 }
 
 .square svg {
