@@ -5,17 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
+    <link
+      rel="preload"
+      href="/fonts/ABCAreal-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/ABCAreal-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p id="game-status"></p>
-    <button id="next-level" type="button" hidden>Next level</button>
-    <p>Level: <span id="level">1</span></p>
-    <p>Move count: <span id="move-count">0</span></p>
-    <p>Time remaining: <span id="timer">0:00</span></p>
-    <ul id="final-board" class="board"></ul>
-    <br />
-    <ul id="board" class="board"></ul>
+    <main>
+      <aside>
+        <nav class="nav">
+          <a href="index.html" class="link ghost">The Digital Study</a>
+          <ul>
+            <li><label for="how-to-play" class="link">How to play</label></li>
+            <li><label for="about" class="link">About</label></li>
+          </ul>
+        </nav>
+
+        <input type="checkbox" id="how-to-play" class="hidden" />
+        <article data-page="how-to-play" class="mt-m">
+          <p class="mb-xs">
+            In The Digital Study, you move the pieces in your game board to
+            match the pieces in the end board. You have a total of 2 minutes to
+            complete as much levels as you can.
+          </p>
+          <p class="p-indent">
+            Pieces moves as in a chess game. When a piece is position, it will
+            change its color to match the end board.
+          </p>
+          <button class="mt-m ml-s">Show pieces movements ↘</button>
+        </article>
+
+        <input type="checkbox" id="about" class="hidden" />
+        <article data-page="about" class="mt-m">
+          <p class="mb-xs">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            vitae purus risus. Mauris non elit hendrerit, imperdiet arcu ac,
+            porta lorem. Vestibulum ac sagittis nisl, pulvinar viverra lacus.
+            Donec fringilla erat eget augue porttitor, eu molestie dui sodales.
+            Vivamus sed libero quis ante vestibulum laoreet. Vestibulum tempor
+            finibus sem in lacinia. Suspendisse porta aliquam tellus. Fusce
+            lacinia auctor massa, rutrum ullamcorper lacus.
+          </p>
+          <p class="p-indent">
+            Nullam mattis ex arcu, faucibus bibendum diam sollicitudin vel. In
+            vestibulum bibendum erat at varius. Fusce id lacus velit. Cras
+            cursus cursus magna eu porttitor. In mauris velit, eleifend vel
+            lobortis blandit, pellentesque vel arcu. Sed pharetra vel eros ac
+            finibus. Nam fringilla porta arcu, et volutpat diam interdum ut.
+            Vivamus fermentum enim nec eros tempus venenatis. Duis placerat leo
+            a neque viverra congue. Fusce aliquam lacinia sapien ac finibus.
+            Proin malesuada lacus sed turpis semper, eu pulvinar sapien
+            sagittis.
+          </p>
+          <p class="mt-m mb-xs">
+            Vestibulum ac sagittis nisl, pulvinar viverra lacus. Donec fringilla
+            erat eget augue porttitor, eu molestie dui sodales.
+          </p>
+        </article>
+      </aside>
+
+      <header>
+        <section id="final-board-container">
+          <ul id="final-board" class="board"></ul>
+          <div class="game-info">
+            <div>
+              <p>Level: <span id="level">1</span></p>
+              <div class="mt-m">
+                <p class="mb-xs">Move count: <span id="move-count">0</span></p>
+                <p class="mb-xs">
+                  Time remaining: <span id="timer">0:00</span>
+                </p>
+              </div>
+            </div>
+            <p id="game-status">Start game</p>
+          </div>
+        </section>
+        <section id="board-container">
+          <ul id="board" class="board"></ul>
+        </section>
+      </header>
+    </main>
+
+    <footer>
+      <p>&copy; 2026</p>
+    </footer>
 
     <script src="src/pieces.js"></script>
     <script src="src/cards.js"></script>

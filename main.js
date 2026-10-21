@@ -174,10 +174,7 @@ function printBoard(board, boardId, isInteractive) {
       square.dataset.column = columnIndex;
       square.classList.add("square");
 
-      if (
-        boardId === "board" &&
-        isPieceInPosition(rowIndex, columnIndex, piece)
-      ) {
+      if (isPieceInPosition(rowIndex, columnIndex, piece)) {
         square.classList.add("correct-position");
       }
 
