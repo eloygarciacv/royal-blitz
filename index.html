@@ -24,7 +24,7 @@
   <body>
     <main>
       <aside>
-        <nav class="nav">
+        <nav class="nav col-2">
           <a href="./" class="link ghost">The Digital Study</a>
           <ul>
             <li><label for="how-to-play" class="link">How to play</label></li>
@@ -43,7 +43,228 @@
             Pieces moves as in a chess game. When a piece is position, it will
             change its color to match the end board.
           </p>
-          <button class="mt-m ml-s">Show pieces movements ↘</button>
+          <label for="show-movements" class="link mt-m ml-s"
+            >Show / hide pieces movements
+            <span class="arrow-icon">↘</span></label
+          >
+
+          <input type="checkbox" id="show-movements" class="hidden" />
+          <article data-page="show-movements" class="mt-m">
+            <div class="col-2 mb-l">
+              <div class="movements-cards mt-m">
+                <p class="mb-xs">King</p>
+                <ul class="board">
+                  <li data-row="0" data-column="0" class="square">
+                    <svg
+                      width="96"
+                      height="96"
+                      viewBox="0 0 96 96"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M96 96H0V0L24 12L48 0L72 12L96 0V96Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li
+                    data-row="0"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="0" data-column="2" class="square"></li>
+                  <li
+                    data-row="1"
+                    data-column="0"
+                    class="square legal-move"
+                  ></li>
+                  <li
+                    data-row="1"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="1" data-column="2" class="square"></li>
+                  <li data-row="2" data-column="0" class="square"></li>
+                  <li data-row="2" data-column="1" class="square"></li>
+                  <li data-row="2" data-column="2" class="square"></li>
+                </ul>
+                <p class="mt-s">One square. Horizontal, vertical, diagonal.</p>
+              </div>
+              <div class="movements-cards mt-m">
+                <p class="mb-xs">Queen</p>
+                <ul class="board">
+                  <li data-row="0" data-column="0" class="square">
+                    <svg
+                      width="96"
+                      height="96"
+                      viewBox="0 0 96 96"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M96 96H0V0H5.3291C13.307 15.4426 29.42 26 48 26C66.58 26 82.693 15.4426 90.6709 0H96V96Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li
+                    data-row="0"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li
+                    data-row="0"
+                    data-column="2"
+                    class="square legal-move"
+                  ></li>
+                  <li
+                    data-row="1"
+                    data-column="0"
+                    class="square legal-move"
+                  ></li>
+                  <li
+                    data-row="1"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="1" data-column="2" class="square"></li>
+                  <li
+                    data-row="2"
+                    data-column="0"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="2" data-column="1" class="square"></li>
+                  <li
+                    data-row="2"
+                    data-column="2"
+                    class="square legal-move"
+                  ></li>
+                </ul>
+                <p class="mt-s">
+                  Many squares. Horizontal, vertical, diagonal.
+                </p>
+              </div>
+              <div class="movements-cards mt-m">
+                <p class="mb-xs">Rook</p>
+                <ul class="board">
+                  <li data-row="0" data-column="0" class="square">
+                    <svg
+                      width="96"
+                      height="96"
+                      viewBox="0 0 96 96"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M32 24H64V0H96V96H0V0H32V24Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li
+                    data-row="0"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li
+                    data-row="0"
+                    data-column="2"
+                    class="square legal-move"
+                  ></li>
+                  <li
+                    data-row="1"
+                    data-column="0"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="1" data-column="1" class="square"></li>
+                  <li data-row="1" data-column="2" class="square"></li>
+                  <li
+                    data-row="2"
+                    data-column="0"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="2" data-column="1" class="square"></li>
+                  <li data-row="2" data-column="2" class="square"></li>
+                </ul>
+                <p class="mt-s">Many squares. Horizontal, vertical.</p>
+              </div>
+              <div class="movements-cards mt-m">
+                <p class="mb-xs">Bishop</p>
+                <ul class="board">
+                  <li data-row="0" data-column="0" class="square">
+                    <svg
+                      width="96"
+                      height="96"
+                      viewBox="0 0 96 96"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M96 96H0V0H39.3623L24.3564 56H32.6387L47.6436 0H96V96Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li data-row="0" data-column="1" class="square"></li>
+                  <li data-row="0" data-column="2" class="square"></li>
+                  <li data-row="1" data-column="0" class="square"></li>
+                  <li
+                    data-row="1"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="1" data-column="2" class="square"></li>
+                  <li data-row="2" data-column="0" class="square"></li>
+                  <li data-row="2" data-column="1" class="square"></li>
+                  <li
+                    data-row="2"
+                    data-column="2"
+                    class="square legal-move"
+                  ></li>
+                </ul>
+                <p class="mt-s">Many squares. Diagonal.</p>
+              </div>
+              <div class="movements-cards mt-m">
+                <p class="mb-xs">Knight</p>
+                <ul class="board">
+                  <li data-row="0" data-column="0" class="square">
+                    <svg
+                      width="96"
+                      height="96"
+                      viewBox="0 0 96 96"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M96 96H0V56C21.4508 56 39.8072 42.7563 47.3418 24H0V0H96V96Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li data-row="0" data-column="1" class="square"></li>
+                  <li data-row="0" data-column="2" class="square"></li>
+                  <li data-row="1" data-column="0" class="square"></li>
+                  <li data-row="1" data-column="1" class="square"></li>
+                  <li
+                    data-row="1"
+                    data-column="2"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="2" data-column="0" class="square"></li>
+                  <li
+                    data-row="2"
+                    data-column="1"
+                    class="square legal-move"
+                  ></li>
+                  <li data-row="2" data-column="2" class="square"></li>
+                </ul>
+                <p class="mt-s">
+                  L shape. Jump other pieces. Horizontal, vertical.
+                </p>
+              </div>
+            </div>
+          </article>
         </article>
 
         <input type="checkbox" id="about" class="hidden" />
@@ -76,7 +297,7 @@
       </aside>
 
       <header>
-        <section id="final-board-container">
+        <section id="final-board-container" class="col-2">
           <ul id="final-board" class="board"></ul>
           <div class="game-info">
             <div>
@@ -97,12 +318,18 @@
       </header>
     </main>
 
-    <footer>
-      <p>&copy; 2026</p>
+    <footer class="col-2">
+      <div>
+        <button id="close-panels" class="link hidden" type="button">
+          Close
+        </button>
+      </div>
+      <div><p>&copy; 2026</p></div>
     </footer>
 
     <script src="src/pieces.js"></script>
     <script src="src/cards.js"></script>
+    <script src="src/ui.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

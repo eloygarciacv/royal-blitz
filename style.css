@@ -28,14 +28,34 @@ a {
   color: var(--orange);
 }
 
+label {
+  display: inline-block;
+}
+
 /* Utility */
+
+.mt-l {
+  margin-top: 3rem;
+}
 
 .mt-m {
   margin-top: 1.5rem;
 }
 
+.mt-s {
+  margin-top: 1.25rem;
+}
+
 .mb-xs {
   margin-bottom: 0.625rem;
+}
+
+.mb-m {
+  margin-bottom: 1.5rem;
+}
+
+.mb-l {
+  margin-bottom: 3rem;
 }
 
 .ml-s {
@@ -62,6 +82,16 @@ a {
 .link.ghost {
   color: var(--deepblue);
   text-decoration: none;
+}
+
+.link.ghost:hover {
+  text-decoration: underline;
+}
+
+.col-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
 /* General */
@@ -94,12 +124,6 @@ main {
 
 /* Nav */
 
-.nav {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
 .nav ul {
   display: flex;
 }
@@ -115,13 +139,21 @@ main {
 /* Content */
 
 article[data-page="how-to-play"],
-article[data-page="about"] {
+article[data-page="about"],
+article[data-page="show-movements"],
+main:has(#how-to-play:checked, #about:checked) > header {
   display: none;
 }
 
 #how-to-play:checked ~ article[data-page="how-to-play"],
-#about:checked ~ article[data-page="about"] {
+#about:checked ~ article[data-page="about"],
+#show-movements:checked ~ article[data-page="show-movements"],
+main:has(#how-to-play:checked, #about:checked) + footer #close-panels {
   display: block;
+}
+
+#close-panels {
+  color: var(--orange);
 }
 
 /* Footer */
@@ -131,11 +163,12 @@ footer {
   bottom: 0;
   width: 100%;
 
-  display: flex;
-  justify-content: flex-end;
-
   padding: 1.25rem 1.25rem 1.125rem;
   background-color: var(--lightgrey);
+}
+
+footer div:last-child {
+  text-align: right;
 }
 
 /* Header */
@@ -147,12 +180,6 @@ header {
 }
 
 /* Boards containers */
-
-section#final-board-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-}
 
 .game-info {
   display: flex;
@@ -192,7 +219,7 @@ section#final-board-container {
   outline-offset: -4px;
 }
 
-#board li.legal-move::after {
+.board li.legal-move::after {
   content: "";
   width: 25%;
   aspect-ratio: 1 / 1;
