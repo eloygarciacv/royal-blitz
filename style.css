@@ -32,6 +32,11 @@ label {
   display: inline-block;
 }
 
+label[for="show-movements"] {
+  display: block;
+  width: fit-content;
+}
+
 /* Utility */
 
 .mt-l {
