@@ -36,6 +36,7 @@ label {
 label[for="show-movements"] {
   display: block;
   width: fit-content;
+  text-box: normal;
 }
 
 /* Utility */
