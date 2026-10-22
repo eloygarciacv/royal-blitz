@@ -1,4 +1,4 @@
-![Royal Blitz gameplay screenshot](./media/how-to-play.mp4)
+![Royal Blitz gameplay screenshot](./media/gameplay.gif)
 
 # Royal Blitz
 
