@@ -1,6 +1,6 @@
 // Global variables
 const boardSize = 3;
-const gameTime = 2 * 60;
+const gameTime = 30;
 
 // Utility variables
 let board = [];
@@ -315,10 +315,8 @@ function checkWin() {
     getAvgMoves();
     updateAvgMoves();
     updateStatus("You won!");
-    document.querySelector("#next-level").classList.remove("hidden");
-    document
-      .querySelector("#next-level")
-      .addEventListener("click", startNextLevel);
+    nextLevelButton.classList.remove("hidden");
+    nextLevelButton.onclick = startNextLevel;
     return;
   }
 
@@ -342,7 +340,7 @@ function startNextLevel() {
   resetLevelState();
 
   document.querySelector("#level").textContent = level;
-  document.querySelector("#next-level").classList.add("hidden");
+  nextLevelButton.classList.add("hidden");
   updateStatus();
   renderBoard();
   updateStatus("Move to start");
@@ -353,6 +351,9 @@ function endGameByTime() {
   clearSelection();
   stopTimer();
   updateStatus("Time is over!");
+  nextLevelButton.textContent = "Play again";
+  nextLevelButton.classList.remove("hidden");
+  nextLevelButton.onclick = () => window.location.reload();
 }
 
 // Main actions

@@ -8,6 +8,8 @@ const about = document.querySelector("#about");
 const videoTab = document.querySelector("#video-example");
 const movementsTab = document.querySelector("#show-movements");
 
+const nextLevelButton = document.querySelector("#next-level");
+
 // Functions
 
 function closeOtherInput(changedInput, otherInput) {
