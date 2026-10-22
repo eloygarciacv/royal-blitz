@@ -1,11 +1,12 @@
-// Close inputs content from other labels
+// Close inputs content from external label
 const closePanels = document.querySelector("#close-panels");
 
 closePanels.addEventListener("click", () => {
   document.querySelector("#how-to-play").checked = false;
-  document.querySelector("#show-movements").checked = false;
   document.querySelector("#about").checked = false;
 });
+
+// Close inputs content by clicking on other pages
 
 const howToPlay = document.querySelector("#how-to-play");
 const about = document.querySelector("#about");

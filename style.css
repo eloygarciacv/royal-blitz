@@ -323,9 +323,6 @@ header {
     grid-column: span 2;
   }
 
-  article[data-page="how-to-play"] {
-  }
-
   article[data-page="show-movements"] {
     grid-column: span 3;
   }
