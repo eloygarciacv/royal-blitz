@@ -252,6 +252,7 @@ function updateStatus(message) {
   const statusElement = document.querySelector("#game-status");
 
   statusElement.textContent = message;
+  statusElement.classList.toggle("orange", message === "Move to start");
 }
 
 function updateMoveCount() {
@@ -264,7 +265,7 @@ function updateMoveCount() {
 
 function updateAvgMoves() {
   const avgMovesElement = document.querySelector("#avg-moves-count");
-  avgMovesElement.textContent = avgMovesCount.toFixed(1);
+  avgMovesElement.textContent = Number(avgMovesCount.toFixed(1));
 }
 
 // Timer functions
@@ -412,3 +413,4 @@ selectCards();
 printBoard(finalBoard, "final-board", false);
 renderBoard();
 updateTimer();
+updateStatus("Move to start");

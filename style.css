@@ -110,6 +110,10 @@ label[for="show-movements"] {
   gap: 1.25rem;
 }
 
+.orange {
+  color: var(--orange);
+}
+
 /* General */
 
 body {
@@ -231,8 +235,8 @@ header {
 }
 
 #board li.selected {
-  outline: 4px solid var(--brightblue);
-  outline-offset: -4px;
+  outline: 6px solid var(--brightblue);
+  outline-offset: -6px;
 }
 
 .board li.legal-move::after {
@@ -254,4 +258,89 @@ header {
 
 #final-board > .square svg {
   color: orangered;
+}
+
+@media screen and (width > 720px) {
+  .col-2 {
+    gap: 2.5rem;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+
+    padding: 2.5rem 2.5rem 0;
+  }
+
+  footer {
+    padding: 2.5rem 2.5rem 2.125rem;
+  }
+
+  main:has(#how-to-play:checked, #about:checked) > header {
+    display: flex;
+    opacity: 20%;
+    pointer-events: none;
+  }
+}
+
+@media screen and (width > 1280px) {
+  header {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+    height: fit-content;
+  }
+
+  #final-board-container.col-2 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
+
+  #final-board-container > .game-info {
+    flex: 1 1 auto;
+  }
+
+  #board-container {
+    grid-column: span 2;
+    height: fit-content;
+  }
+
+  .nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+
+  .page-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 2.5rem;
+  }
+
+  .page-container p,
+  .page-container label {
+    grid-column: span 2;
+  }
+
+  article[data-page="how-to-play"] {
+  }
+
+  article[data-page="show-movements"] {
+    grid-column: span 3;
+  }
+
+  article[data-page="show-movements"] > div {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+  }
+
+  article[data-page="show-movements"] > div > :nth-child(3) {
+    grid-column: 1;
+  }
+
+  main:has(#how-to-play:checked, #about:checked) > header {
+    display: grid;
+  }
 }
