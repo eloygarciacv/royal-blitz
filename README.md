@@ -19,22 +19,29 @@ This project was created as part of the Ironhack WebDev Bootcamp.
 
 The project must:
 
-1.  Use only HTML, CSS, and plain JavaScript. It must run entirely in the browser without frameworks or a backend.
+1.  Use only HTML, CSS, and plain JavaScript. It must run entirely in the browser without frameworks or a backend.  
     _— I lowkey missed Tailwind CSS but all good ✌️_
-2.  Use DOM manipulation and browser events for the game's interactions and animations.
-    _— Yeah, it have some of that._
-3.  Use ES6 classes to model and organize game elements and their behavior.
-    _— Okay, so I DO NOT HAVE classes. My first approach was to have them, but all my game elements are unique so it was a bit pointless to create classes and instances if all of them are different._
-4.  Include distinct start, gameplay, and win/lose states.
+
+2.  Use DOM manipulation and browser events for the game's interactions and animations.  
+    _— Yes! Actually one of the biggest breakthrough in the project was to send key information to the HTML to then read it again with JavaScript._
+
+3.  Use ES6 classes to model and organize game elements and their behavior.  
+    _— Okay, so **I don't have classes**. My first approach was to have them, but all my game elements are unique so it was a bit pointless to create classes and instances if all of them are different._
+
+4.  Include distinct start, gameplay, and win/lose states.  
     _— UX could definitely be better but where's the fun on that._
-5.  Show clear feedback when the player wins or loses and provide a working way to restart the game.
-    _— Sames as number 4, I guess. A very trendy number this days, btw._
-6.  Keep HTML, CSS, and JavaScript in separate files and use clear, readable names and structure.
+
+5.  Show clear feedback when the player wins or loses and provide a working way to restart the game.  
+    _— Same as number 4, I guess. A very trendy number this days, by the way._
+
+6.  Keep HTML, CSS, and JavaScript in separate files and use clear, readable names and structure.  
     _— This I think I got it right._
-7.  Be stored in a GitHub repository with at least **two meaningful commits for every day you work on the project**.
+
+7.  Be stored in a GitHub repository with at least **two meaningful commits for every day you work on the project**.  
     _— Nice._
-8.  Be deployed online, for example with GitHub Pages, so that anyone with the link can play it.
-    _— Yay! It's here: https://eloygarciacv.github.io/royal-blitz/_
+
+8.  Be deployed online, for example with GitHub Pages, so that anyone with the link can play it.  
+    _— Yay! It's here:_ https://eloygarciacv.github.io/royal-blitz/
 
 ## AI Usage
 
