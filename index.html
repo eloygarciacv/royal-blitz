@@ -36,23 +36,42 @@
         <article data-page="how-to-play" class="mt-m">
           <div class="page-container">
             <p class="mb-xs">
-              In The Digital Study, you move the pieces in your game board to
-              match the pieces in the end board. You have a total of 2 minutes
-              to complete as much levels as you can.
+              Move the pieces on the game board to match the positions shown on
+              the target board. You have 2 minutes to complete as many levels as
+              you can.
             </p>
             <p class="p-indent mb-m">
-              Pieces moves as in a chess game. When a piece is position, it will
-              change its color to match the end board.
+              Select a piece to see its available moves. Each piece moves like
+              in a chess game. When a piece is in the correct position, it will
+              change its color.
             </p>
-            <label for="show-movements" class="link ml-s"
-              >Show / hide pieces movements
-              <span class="arrow-icon">↘</span></label
-            >
+
+            <p class="mb-l">
+              Once all the pieces are in the correct positions, you can advance
+              to the next level.
+            </p>
+            <div class="tabs-container mb-l d-flex">
+              <label for="video-example" class="link mr-xs"
+                >Video example</label
+              >
+              <label for="show-movements" class="link">Pieces movements</label>
+            </div>
+
+            <input type="checkbox" id="video-example" class="hidden" checked />
+            <video
+              data-page="video-example"
+              id="how-to-play-video"
+              class="mb-m"
+              src="/media/how-to-play.mp4"
+              autoplay
+              loop
+              muted
+            ></video>
 
             <input type="checkbox" id="show-movements" class="hidden" />
-            <article data-page="show-movements" class="mt-m">
+            <article data-page="show-movements">
               <div class="col-2 mb-l">
-                <div class="movements-cards mt-m">
+                <div class="movements-cards">
                   <p class="mb-xs">King</p>
                   <ul class="board">
                     <li data-row="0" data-column="0" class="square">
@@ -94,7 +113,7 @@
                     One square. Horizontal, vertical, diagonal.
                   </p>
                 </div>
-                <div class="movements-cards mt-m">
+                <div class="movements-cards">
                   <p class="mb-xs">Queen</p>
                   <ul class="board">
                     <li data-row="0" data-column="0" class="square">
@@ -148,7 +167,7 @@
                     Many squares. Horizontal, vertical, diagonal.
                   </p>
                 </div>
-                <div class="movements-cards mt-m">
+                <div class="movements-cards">
                   <p class="mb-xs">Rook</p>
                   <ul class="board">
                     <li data-row="0" data-column="0" class="square">
@@ -192,7 +211,7 @@
                   </ul>
                   <p class="mt-s">Many squares. Horizontal, vertical.</p>
                 </div>
-                <div class="movements-cards mt-m">
+                <div class="movements-cards">
                   <p class="mb-xs">Bishop</p>
                   <ul class="board">
                     <li data-row="0" data-column="0" class="square">
@@ -228,7 +247,7 @@
                   </ul>
                   <p class="mt-s">Many squares. Diagonal.</p>
                 </div>
-                <div class="movements-cards mt-m">
+                <div class="movements-cards">
                   <p class="mb-xs">Knight</p>
                   <ul class="board">
                     <li data-row="0" data-column="0" class="square">

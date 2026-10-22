@@ -1,39 +1,48 @@
-// Close inputs content from external label
+// Variables and DOM selectors
+
 const closePanels = document.querySelector("#close-panels");
-
-closePanels.addEventListener("click", () => {
-  document.querySelector("#how-to-play").checked = false;
-  document.querySelector("#about").checked = false;
-});
-
-// Close inputs content by clicking on other pages
 
 const howToPlay = document.querySelector("#how-to-play");
 const about = document.querySelector("#about");
 
-howToPlay.addEventListener("change", () => {
-  if (howToPlay.checked) {
-    about.checked = false;
+const videoTab = document.querySelector("#video-example");
+const movementsTab = document.querySelector("#show-movements");
+
+// Functions
+
+function closeOtherInput(changedInput, otherInput) {
+  if (changedInput.checked) {
+    otherInput.checked = false;
   }
+}
+
+function handleTabChange(changedTab, otherTab) {
+  closeOtherInput(changedTab, otherTab);
+}
+
+// Close the main panels
+
+closePanels.addEventListener("click", () => {
+  howToPlay.checked = false;
+  about.checked = false;
+});
+
+// Keep the main panels mutually exclusive
+
+howToPlay.addEventListener("change", () => {
+  closeOtherInput(howToPlay, about);
 });
 
 about.addEventListener("change", () => {
-  if (about.checked) {
-    howToPlay.checked = false;
-  }
+  closeOtherInput(about, howToPlay);
 });
 
-// Change the arrow direction of show/hide movements
+// Keep the tabs mutually exclusive and update their arrows
 
-const showMovementsLabel = document.querySelector("#show-movements");
-const showMovementsIcon = document.querySelector(
-  'label[for="show-movements"] .arrow-icon',
-);
+videoTab.addEventListener("change", () => {
+  handleTabChange(videoTab, movementsTab);
+});
 
-showMovementsLabel.addEventListener("change", () => {
-  if (showMovementsLabel.checked) {
-    showMovementsIcon.textContent = "↗";
-  } else {
-    showMovementsIcon.textContent = "↘";
-  }
+movementsTab.addEventListener("change", () => {
+  handleTabChange(movementsTab, videoTab);
 });
