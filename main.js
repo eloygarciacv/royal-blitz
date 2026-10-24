@@ -1,6 +1,6 @@
 // Global variables
 const boardSize = 3;
-const gameTime = 2 * 60;
+const gameTime = 30;
 
 // Utility variables
 let board = [];
@@ -353,7 +353,42 @@ function endGameByTime() {
   updateStatus("Time is over!");
   nextLevelButton.textContent = "Play again";
   nextLevelButton.classList.remove("hidden");
-  nextLevelButton.onclick = () => window.location.reload();
+  nextLevelButton.onclick = restartGame;
+}
+
+function restartGame() {
+  stopTimer();
+
+  board = [];
+  finalBoard = [];
+  boardIndex = null;
+  finalBoardIndex = null;
+
+  selectedSquare = null;
+  legalMoves = [];
+
+  gameWon = false;
+  gameOver = false;
+
+  level = 1;
+  moveCount = 0;
+  totalMoveCount = 0;
+  avgMovesCount = 0;
+  timeRemaining = gameTime;
+
+  selectCards();
+
+  document.querySelector("#level").textContent = level;
+  document.querySelector("#move-count").textContent = moveCount;
+  document.querySelector("#avg-moves-count").textContent = "N/A";
+
+  nextLevelButton.textContent = "Next level";
+  nextLevelButton.classList.add("hidden");
+
+  printBoard(finalBoard, "final-board", false);
+  renderBoard();
+  updateTimer();
+  updateStatus("Move to start");
 }
 
 // Main actions
