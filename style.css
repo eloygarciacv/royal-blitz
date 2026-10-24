@@ -176,6 +176,16 @@ main:has(#how-to-play:checked, #about:checked) + footer #close-panels,
   display: block;
 }
 
+body:has(#how-to-play:checked, #about:checked) :is(#logo, #copyright),
+body:has(#how-to-play:checked, #about:checked)
+  .nav
+  ul
+  > li:not(:last-child)::after,
+body:has(#how-to-play:checked) :is(label[for="about"]),
+body:has(#about:checked) :is(label[for="how-to-play"]) {
+  opacity: 20%;
+}
+
 #close-panels {
   color: var(--orange);
 }
