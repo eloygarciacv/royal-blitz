@@ -1,6 +1,6 @@
 // Global variables
 const boardSize = 3;
-const gameTime = 30;
+const gameTime = 2 * 60;
 
 // Utility variables
 let board = [];

@@ -54,6 +54,7 @@ GitHub Copilot was used for:
 - Making complex CSS selectors.
 - Learning about new JavaScript methods and syntax, such as `some()` and `[...array]`.
 - Translating TypeScript code into JavaScript for better understanding.
+- Generating and verifying the board layouts in `cards.js` against a set of rules defined.
 
 ## Resources
 
